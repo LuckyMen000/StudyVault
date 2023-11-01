@@ -2,12 +2,24 @@
   "name": "studyvault",
   "version": "0.1.0",
   "private": true,
+  "contributors": [
+    {
+      "name": "LuckyMen000",
+      "email": "danil_unturned459@mail.ru"
+    },
+    {
+      "name": "Ab-BeGa",
+      "email": ""
+    }
+  ],
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.0", 
+    "params": "^0.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -36,5 +48,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "- pnpm or npm\n- chakra-ui.com\n- https://github.com/react-icons/react-icons", 
+  "main": "index.js",
+  "devDependencies": {
+    "prettier": "^3.0.3"
+  },
+  "author": "Danil Kossilov",
+  "license": "MIT",
+  "bugs": {
+    "url": "http://localhost:3000/"
+  },
+  "homepage": "http://localhost:3000/"
 }
