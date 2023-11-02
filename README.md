@@ -8,6 +8,7 @@
      |_____ frontend
 
    git checkout develop
+   git branch "name branch. Example(fix/hotfix/number fix or hotfix)
    git add .
    git commit -m "комент к коммиту"
    git push 
