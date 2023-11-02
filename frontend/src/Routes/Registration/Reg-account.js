@@ -29,7 +29,7 @@ function Login() {
         w="400px" 
       >
         <VStack spacing="4">
-          <Text fontSize="xl">Вход в систему</Text>
+          <Text fontSize="xl">Регистрация</Text>
           <form onSubmit={handleSubmit}>
             <FormControl>
               <FormLabel>Email</FormLabel>
@@ -51,9 +51,9 @@ function Login() {
               Войти
             </Button>
             <Text marginTop="15px">
-              <p>If you don't have an account yet,</p>
-              <Link textDecoration="underline" to="/register">
-                register now!
+              <p>If you alredy have account,</p>
+              <Link textDecoration="underline" to="/login">
+                login now!
               </Link>
             </Text>
           </form>
