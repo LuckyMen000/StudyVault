@@ -4,7 +4,7 @@
    git clone https://github.com/LuckyMen000/StudyVault.git
    cd StudyVault
      |
-     |____ backend
+     |_____ backend
      |_____ frontend
 
    git checkout develop
