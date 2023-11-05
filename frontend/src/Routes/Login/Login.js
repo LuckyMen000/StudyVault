@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import {
   FormControl,
   FormLabel,
@@ -8,11 +9,10 @@ import {
   Text,
   VStack,
   Center,
-  Link,
 } from '@chakra-ui/react';
 
 function Login() {
-  const [email, setEmail] = useState('');
+  const [Login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
@@ -22,21 +22,21 @@ function Login() {
   return (
     <Center minH="100vh">
       <Box
-        background="gray.300" 
-        p="8" 
-        boxShadow="lg" 
-        borderRadius="md" 
-        w="400px" 
+        background="gray.300"
+        p="8"
+        boxShadow="lg"
+        borderRadius="md"
+        w="400px"
       >
         <VStack spacing="4">
           <Text fontSize="xl">Вход в систему</Text>
           <form onSubmit={handleSubmit}>
             <FormControl>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Login</FormLabel>
               <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="Login"
+                value={Login}
+                onChange={(e) => setLogin(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -52,9 +52,7 @@ function Login() {
             </Button>
             <Text marginTop="15px">
               <p>If you don't have an account yet,</p>
-              <Link textDecoration="underline" to="/register">
-                register now!
-              </Link>
+              <Link textDecoration="underline" to="/register">register now!</Link>
             </Text>
           </form>
         </VStack>
