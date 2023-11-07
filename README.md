@@ -11,7 +11,8 @@
    git branch "name branch. Example(feature/new/fix/hotfix/number fix or hotfix)
    git add .
    git commit -m "комент к коммиту"
-   git push 
+   git push
+   if git push doesn't work use (git pull origin develop) and next "git push"
 ```
 
 
