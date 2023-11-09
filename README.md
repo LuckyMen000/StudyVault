@@ -11,7 +11,8 @@
    git branch "name branch. Example(feature/new/fix/hotfix/number fix or hotfix)
    git add .
    git commit -m "комент к коммиту"
-   git push 
+   git push
+   if git push doesn't work use (git pull origin develop) and next "git push"
 ```
 
 
@@ -28,5 +29,5 @@ git commit -m "short commit name. Example(feature/new/fix/hotfix/number fix or h
 git push --set-upstream origin unical branch name 
 ```
 
-(1) About Pull Requests: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
-(2) About Pull Requests: https://root.cern/for_developers/creating_pr/
++ (1) About Pull Requests: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
++ (2) About Pull Requests: https://root.cern/for_developers/creating_pr/
