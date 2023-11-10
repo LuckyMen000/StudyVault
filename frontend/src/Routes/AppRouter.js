@@ -1,16 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from '../../components/Login/Login'
-import Main from '../../components/Main/main'
+import { Route, Routes } from 'react-router-dom';
+import Login from '../Routes/Login/Login';
+import Main from '../Routes/Main/main';
+import RegAccount from '../Routes/Registration/Reg-account';
+import AdminPanel from '../Components/Administration/Admin';
 
 const StudyVaultRoutes = () => (
-    <BrowserRouter>
-        <Switch>
-            <Route path="/login" element={<Login/>}></Route>
-            <Route path="/main" element={<Main/>}></Route>
-        </Switch>
-    </BrowserRouter>
-    
-)
+  <Routes>
+    <Route path="/login" element={<Login />} />
+    <Route path="/main" element={<Main />} />
+    <Route path="/register" element={<RegAccount />} />
+    <Route path="/admin" element={<AdminPanel/>} />
+  </Routes>
+);
 
 export default StudyVaultRoutes;
