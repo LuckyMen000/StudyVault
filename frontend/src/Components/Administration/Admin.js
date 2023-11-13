@@ -17,7 +17,7 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 import { SettingsIcon, ArrowBackIcon } from '@chakra-ui/icons';
-import './admin.css'; // Импорт файла стилей с маленькой буквы
+import './admin.scss'; // Импорт файла стилей с маленькой буквы
 
 function Dashboard() {
   const [isCreatingUser, setIsCreatingUser] = useState(false);
