@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './admin.css'
 import {
   Box,
   Heading,
@@ -13,11 +14,10 @@ import {
   Table,
   Tbody,
   Tr,
-  Td,
+  Td, 
   IconButton,
 } from '@chakra-ui/react';
 import { SettingsIcon, ArrowBackIcon } from '@chakra-ui/icons';
-import './admin.scss'; // Импорт файла стилей с маленькой буквы
 
 function Dashboard() {
   const [isCreatingUser, setIsCreatingUser] = useState(false);
@@ -38,43 +38,69 @@ function Dashboard() {
   // ... (остальной код)
 
   return (
-    <Box className="admin-container">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Heading className="admin-heading">Панель управления</Heading>
-        <Box>
-          <IconButton
-            icon={<SettingsIcon />}
-            aria-label="Настройки"
-            className="admin-button"
-            onClick={() => {
-              // Обработчик для настроек
-            }}
-          />
-          <IconButton
-            icon={<ArrowBackIcon />}
-            aria-label="Выйти"
-            onClick={handleLogout}
-          />
+    <Box className="admin-container" textAlign="center" p={4}>
+      <Box width="100%" mx="auto">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={4}
+        >
+          <Heading className="admin-heading">Панель управления</Heading>
+          <Box>
+            <IconButton
+              icon={<SettingsIcon />}
+              aria-label="Настройки"
+              className="admin-button"
+              onClick={() => {
+                // Обработчик для настроек
+              }}
+            />
+            <IconButton
+              icon={<ArrowBackIcon />}
+              aria-label="Выйти"
+              onClick={handleLogout}
+              ml={2} // Добавлен отступ между кнопками
+            />
+          </Box>
         </Box>
+        <Button
+          onClick={openCreateUserModal}
+          className="admin-button"
+          colorScheme="teal"
+          mb={4} // Добавлен отступ после кнопки
+        >
+          Создать пользователя
+        </Button>
+        <Table className="admin-table">
+          <Tbody>
+            {users.map((user) => (
+              <Tr key={user.id}>
+                <Td>{user.name}</Td>
+                <Td>{user.email}</Td>
+                {/* Другие поля пользователя */}
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+        <Button
+          className="admin-logout"
+          onClick={handleLogout}
+          colorScheme="red"
+          mt={4} // Добавлен отступ перед кнопкой
+        >
+          Выйти
+        </Button>
+        <Modal isOpen={isCreatingUser} onClose={closeCreateUserModal}>
+          {/* ... (модальное окно для создания пользователя) */}
+        </Modal>
       </Box>
-      <Button onClick={openCreateUserModal} className="admin-button">Создать пользователя</Button>
-      <Table className="admin-table">
-        <Tbody>
-          {users.map((user) => (
-            <Tr key={user.id}>
-              <Td>{user.name}</Td>
-              <Td>{user.email}</Td>
-              {/* Другие поля пользователя */}
-            </Tr>
-          ))}
-        </Tbody>
-      </Table>
-      <Button className="admin-logout" onClick={handleLogout}>Выйти</Button>
-      <Modal isOpen={isCreatingUser} onClose={closeCreateUserModal}>
-        {/* ... (модальное окно для создания пользователя) */}
-      </Modal>
     </Box>
   );
-}
+  }
+  
+
+  
+
 
 export default Dashboard;
