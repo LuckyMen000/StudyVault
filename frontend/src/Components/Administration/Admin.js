@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './admin.css'
 import {
   Box,
   Heading,
@@ -18,6 +17,7 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 import { SettingsIcon, ArrowBackIcon } from '@chakra-ui/icons';
+import './admin.css'
 
 function Dashboard() {
   const [isCreatingUser, setIsCreatingUser] = useState(false);
@@ -72,6 +72,9 @@ function Dashboard() {
         >
           Создать пользователя
         </Button>
+        <Modal isOpen={isCreatingUser} onClose={closeCreateUserModal}>
+          {/* ... (модальное окно для создания пользователя) */}
+        </Modal>
         <Table className="admin-table">
           <Tbody>
             {users.map((user) => (
@@ -91,9 +94,6 @@ function Dashboard() {
         >
           Выйти
         </Button>
-        <Modal isOpen={isCreatingUser} onClose={closeCreateUserModal}>
-          {/* ... (модальное окно для создания пользователя) */}
-        </Modal>
       </Box>
     </Box>
   );
