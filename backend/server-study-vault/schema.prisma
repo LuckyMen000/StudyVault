@@ -26,3 +26,11 @@ model Document {
   title String
   url   String
 }
+
+model Notes {
+  id    Int       @id @default(autoincrement())
+  notes String
+  notes_detail String
+  title String
+  data_time Data 
+}
