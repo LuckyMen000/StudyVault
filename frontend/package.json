@@ -50,8 +50,7 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version",
-      "last 1 opera version",
-      "last 1 opera gx version"
+      "last 1 opera version"
     ]
   },
   "description": "- pnpm or npm\n- chakra-ui.com\n- https://github.com/react-icons/react-icons",
