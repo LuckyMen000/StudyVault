@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Input, InputGroup, InputRightElement } from '@chakra-ui/react';
+import { FaSearch } from 'react-icons/fa';
 
 const InputForm = () => {
   const [inputValue, setInputValue] = useState('');
@@ -13,17 +15,19 @@ const InputForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Enter something:
-        <input
-          type="text"
+    <form onSubmit={handleSubmit} style={{ width: '200px', marginLeft: '20px' }}>
+      <InputGroup size="sm">
+        <Input
+          variant='outline'
+          placeholder='Search'
           value={inputValue}
           onChange={handleInputChange}
-          placeholder="Type here"
+          size="sm"
         />
-      </label>
-      <button type="submit">Submit</button>
+        <InputRightElement>
+          <FaSearch />
+        </InputRightElement>
+      </InputGroup>
     </form>
   );
 };
