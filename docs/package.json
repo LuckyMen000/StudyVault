@@ -1,0 +1,21 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "StudyVault",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuckyMen000/StudyVault.git"
+  },
+  "author": 
+    "Danil Kossilov",
+    
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuckyMen000/StudyVault/issues"
+  },
+  "homepage": "https://github.com/LuckyMen000/StudyVault#readme"
+}
