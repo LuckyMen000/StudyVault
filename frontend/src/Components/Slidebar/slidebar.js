@@ -2,10 +2,13 @@
 import React from 'react';
 import { Box, VStack, Icon, Text } from '@chakra-ui/react';
 import { FaHome, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import './slidebar.css';
+
+
 
 const Sidebar = () => {
   return (
-    <VStack spacing={4} align="left">
+    <VStack className="sidebar-container" spacing={4} align="center" background="WhiteAlpha 800">
       <Box>
         <Icon as={FaHome} boxSize={6} />
         <Text>Home</Text>
@@ -14,13 +17,13 @@ const Sidebar = () => {
         <Icon as={FaUser} boxSize={6} />
         <Text>Profile</Text>
       </Box>
-      <Box>
+      <Box className="logout-settings">
         <Icon as={FaCog} boxSize={6} />
-        <Text>Settings</Text>
+        <button>Settings</button>
       </Box>
-      <Box>
+      <Box className="logout-settings">
         <Icon as={FaSignOutAlt} boxSize={6} />
-        <Text>Logout</Text>
+        <button>Logout</button>
       </Box>
     </VStack>
   );
