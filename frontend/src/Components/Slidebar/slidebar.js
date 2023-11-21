@@ -11,19 +11,19 @@ const Sidebar = () => {
     <VStack className="sidebar-container" spacing={4} align="center" background="WhiteAlpha 800">
       <Box>
         <Icon as={FaHome} boxSize={6} />
-        <Text>Home</Text>
+        <Text></Text>
       </Box>
       <Box>
         <Icon as={FaUser} boxSize={6} />
-        <Text>Profile</Text>
+        <Text></Text>
       </Box>
       <Box className="logout-settings">
         <Icon as={FaCog} boxSize={6} />
-        <button>Settings</button>
+        <button></button>
       </Box>
       <Box className="logout-settings">
         <Icon as={FaSignOutAlt} boxSize={6} />
-        <button>Logout</button>
+        <button></button>
       </Box>
     </VStack>
   );
