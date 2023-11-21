@@ -6,6 +6,8 @@ import RegAccount from '../Routes/Registration/Reg-account';
 import AdminPanel from '../Components/Administration/Admin';
 import Profile from '../Routes/Profile/profile';
 import Notes from '../Routes/Notes/note';
+import Settings from '../Routes/SettingsPage/settingsPage';
+import HomeWork from '../Routes/Homework/homework';
 
 const StudyVaultRoutes = () => (
   <Routes>
@@ -15,6 +17,8 @@ const StudyVaultRoutes = () => (
     <Route path="/main" element={<Main />} />
     <Route path="/profile" element={<Profile/>} />
     <Route path="/notes" element={<Notes/>} />
+    <Route path="/settings" element={<Settings/>} />
+    <Route path="/homework" element={<HomeWork/>} />
   </Routes>
 );
 
