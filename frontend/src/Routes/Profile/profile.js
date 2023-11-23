@@ -14,7 +14,7 @@ const ProfilePage = () => {
     const [profileData, setProfileData] = useState({
         username: 'JohnDoe',
         email: 'john.doe@example.com',
-        avatar: 'https://via.placeholder.com/150', // Replace with a real avatar URL
+        avatar: 'https://via.placeholder.com/150', 
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         interests: ['Coding', 'Reading', 'Traveling'],
     });
@@ -26,13 +26,10 @@ const ProfilePage = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         // Logic for form submission here
-        // Update profileData state with form values
-        // Remember to call setIsEditing(false) after updating data
     };
 
     const handleChange = (e) => {
-        // Handle input changes
-        // Update corresponding state fields
+
     };
 
     return (
@@ -95,7 +92,6 @@ const ProfilePage = () => {
                                     placeholder="Email"
                                     mb="10px"
                                 />
-                                {/* Add input fields for bio and interests */}
                                 <Button type="submit" colorScheme="blue" mr="2">
                                     Save
                                 </Button>
