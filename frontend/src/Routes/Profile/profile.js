@@ -1,39 +1,51 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
-    Box,
-    Button,
-    Input,
-    FormControl,
-    FormLabel,
-    Avatar,
-    Text,
+  Box,
+  Button,
+  Input,
+  FormControl,
+  FormLabel,
+  Avatar,
+  Text,
+  ChakraProvider,
 } from '@chakra-ui/react';
+// Check and correct the import path for Slidebar
+import Slidebar from '../../Components/Slidebar/slidebar';
 
 const ProfilePage = () => {
-    const [isEditing, setIsEditing] = useState(false);
-    const [profileData, setProfileData] = useState({
-        username: 'JohnDoe',
-        email: 'john.doe@example.com',
-        avatar: 'https://via.placeholder.com/150', 
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        interests: ['Coding', 'Reading', 'Traveling'],
+  const [isEditing, setIsEditing] = useState(false);
+  const [profileData, setProfileData] = useState({
+    username: 'JohnDoe',
+    email: 'john.doe@example.com',
+    avatar: 'https://via.placeholder.com/150',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    interests: ['Coding', 'Reading', 'Traveling'],
+  });
+
+  const toggleEditing = () => {
+    setIsEditing((prevState) => !prevState);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Logic for form submission here to update profileData state
+    // For example: setProfileData(updatedProfileData);
+    setIsEditing(false); // Exit edit mode after submission
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData({
+      ...profileData,
+      [name]: value,
     });
+  };
 
-    const toggleEditing = () => {
-        setIsEditing((prevState) => !prevState);
-    };
-
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        // Logic for form submission here
-    };
-
-    const handleChange = (e) => {
-
-    };
-
-    return (
-        <Box
+  return (
+    <ChakraProvider>
+      <div style={{ display: 'flex', margin: '20px' }}>
+      <Slidebar />
+      <Box
             width="100%"
             padding="40px"
             textAlign="center"
@@ -92,6 +104,14 @@ const ProfilePage = () => {
                                     placeholder="Email"
                                     mb="10px"
                                 />
+                                <Input
+                                    type="password"
+                                    name="password"
+                                    value={profileData.email}
+                                    onChange={handleChange}
+                                    placeholder="Email"
+                                    mb="10px"
+                                />
                                 <Button type="submit" colorScheme="blue" mr="2">
                                     Save
                                 </Button>
@@ -102,7 +122,9 @@ const ProfilePage = () => {
                 </FormControl>
             </Box>
         </Box>
-    );
+      </div>
+    </ChakraProvider>
+  );
 };
 
 export default ProfilePage;
