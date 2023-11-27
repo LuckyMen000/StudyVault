@@ -9,3 +9,7 @@
   pnpm i
   pnpm start
 ```
+```shell
+  yarn install
+  yarn start
+```
