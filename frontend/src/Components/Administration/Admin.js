@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Box,
   Heading,
+  Text,
   Button,
   Modal,
   Table,
@@ -11,7 +12,10 @@ import {
   IconButton,
   ChakraProvider,
 } from '@chakra-ui/react';
-import { SettingsIcon, ArrowBackIcon } from '@chakra-ui/icons';
+import { 
+  SettingsIcon, 
+  ArrowBackIcon 
+} from '@chakra-ui/icons';
 import { FaDatabase } from 'react-icons/fa';
 import Sidebar from '../../Components/Slidebar/slidebar';
 import { Link } from 'react-router-dom';
@@ -73,6 +77,11 @@ function Dashboard() {
                 />
               </Box>
             </Box>
+
+            <Box>
+              <Text mb="12px">
+                Создание пользователя
+              </Text>
             <Button
               onClick={openCreateUserModal}
               className="admin-button"
@@ -93,14 +102,7 @@ function Dashboard() {
                 ))}
               </Tbody>
             </Table>
-            <Button
-              className="admin-logout"
-              onClick={handleLogout}
-              colorScheme="red"
-              mt={4} 
-            >
-              Выйти
-            </Button>
+            </Box>
           </Box>
         </Box>
       </div>

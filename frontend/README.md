@@ -14,3 +14,13 @@
   yarn install
   yarn start
 ```
+
+# Bash script
+```shell
+  cd frontend 
+  ./frontned.sh
+  ./install_and_start_frontned.sh
+
+  (#2)
+  chmod +x frontend.sh
+```
