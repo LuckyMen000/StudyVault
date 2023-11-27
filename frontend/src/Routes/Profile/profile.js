@@ -9,7 +9,6 @@ import {
   Text,
   ChakraProvider,
 } from '@chakra-ui/react';
-// Check and correct the import path for Slidebar
 import Slidebar from '../../Components/Slidebar/slidebar';
 
 const ProfilePage = () => {
