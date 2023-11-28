@@ -24,7 +24,7 @@ const theme = extendTheme({
   },
 });
 
-function App() {
+function Notes() {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState("");
   const [newSubTitle, setNewSubTitle] = useState("");
@@ -175,4 +175,4 @@ function App() {
   );
 }
 
-export default App;
+export default Notes;
