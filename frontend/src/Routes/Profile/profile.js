@@ -1,13 +1,21 @@
 import React from "react";
-import { ChakraProvider, Flex, Text, Avatar, Badge, Button, Box, CSSReset, extendTheme } from "@chakra-ui/react";
+import { 
+  ChakraProvider, 
+  Flex, 
+  Text, 
+  Avatar, 
+  Badge, 
+  Button, 
+  Box, 
+  CSSReset, 
+  extendTheme 
+} from "@chakra-ui/react";
 import Gradient from './Gradient.png';
-// import Ellipse1 from './Ellipse 1.png'; // закомментировали, так как не используется 
-// import { Avatar, Badge } from "@chakra-ui/react"; // закомментировали, так как не используется
+
 
 
 import { Input } from "@chakra-ui/react";
 
-// ... (ваш остальной код)
 
 
 const customTheme = extendTheme({
@@ -17,7 +25,8 @@ const customTheme = extendTheme({
   },
 });
 
-function App() {
+
+function ProfilePage() {
   const backgroundImage = `url(${Gradient})`;
 
   return (
@@ -30,7 +39,7 @@ function App() {
         bgPosition="center"
         color="white"
       >
-        {/* Левая часть (30% экрана) */}
+
         <Flex direction="column" align="center" justify="flex-start" w="30%" p={8}>
           {/* Шапка профиля */}
           <Box className="Ava" w="100%" p={4} position="relative">
@@ -109,4 +118,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProfilePage;

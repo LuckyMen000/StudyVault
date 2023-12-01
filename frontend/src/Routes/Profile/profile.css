@@ -7,7 +7,6 @@
     overflow: hidden;
   }
   
-  /* ... Стили для остальных компонентов ... */
   
   .Rasul {
     width: 101px;
@@ -23,7 +22,6 @@
     word-wrap: break-word;
   }
   
-  /* Стили для Lorem Ipsum */
   .MiniBio {
     width: 436px;
     height: 543px;
@@ -40,5 +38,4 @@
     word-wrap: break-word;
   }
   
-  /* ... Стили для остальных текстовых компонентов ... */
   
