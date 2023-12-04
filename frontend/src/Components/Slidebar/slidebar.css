@@ -3,9 +3,14 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #f1f1f1;
-    padding: 20px;
+    padding: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 95vh; 
-    border-radius: 15px;
+    border-radius: 17px;
 }
-
+.box-icon {
+    margin-bottom: 10px;
+    background: #f9f8f8;
+    padding: 10px;
+    padding-bottom: 5px;
+}  

@@ -15,7 +15,7 @@ const InputForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ width: '200px', marginLeft: '20px' }}>
+    <form onSubmit={handleSubmit} style={{ width: '230px', marginLeft: '20px' }}>
       <InputGroup size="sm">
         <Input
           variant='outline'
@@ -23,6 +23,7 @@ const InputForm = () => {
           value={inputValue}
           onChange={handleInputChange}
           size="sm"
+          style={{ borderRadius: '20px' }} 
         />
         <InputRightElement>
           <FaSearch />
