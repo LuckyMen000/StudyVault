@@ -13,13 +13,13 @@ const Main = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', padding: '5px'}}>
         <Sidebar />
         <InputForm />
+        <HomeWorkInfo style={{ display:'flex'}}/>
         <div style={{ display: 'flex', flexDirection: 'column', }}>
           <div style={{ marginBottom: '20px' }}>
             <Profile />
           </div>
           <NoteBox />
         </div>
-        <HomeWorkInfo/>
       </div>
     </ChakraProvider>
   );
