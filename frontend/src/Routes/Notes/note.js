@@ -10,9 +10,13 @@ import {
   extendTheme,
   IconButton,
   Badge,
-  Checkbox,
+  Checkbox
 } from "@chakra-ui/react";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { 
+  FaThumbsUp, 
+  FaThumbsDown 
+} from "react-icons/fa";
+import Sidebar from '../../Components/Slidebar/slidebar';
 
 const theme = extendTheme({
   components: {
@@ -28,8 +32,8 @@ function Notes() {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState("");
   const [newSubTitle, setNewSubTitle] = useState("");
-  const [showConfirmDelete, setShowConfirmDelete] = useState(false); // Состояние для отображения кнопки подтверждения удаления
-  const [deletingIndex, setDeletingIndex] = useState(null); // Состояние для отслеживания индекса элемента, который собираемся удалить
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false); 
+  const [deletingIndex, setDeletingIndex] = useState(null); 
 
   const addNote = () => {
     if (newNote.trim() !== "") {
@@ -49,22 +53,20 @@ function Notes() {
   };
 
   const deleteNote = (index) => {
-    // Если кнопка подтверждения удаления уже отображена, то удаляем элемент
     if (showConfirmDelete && deletingIndex === index) {
       const updatedNotes = [...notes];
       updatedNotes.splice(index, 1);
       setNotes(updatedNotes);
-      setShowConfirmDelete(false); // Скрываем кнопку подтверждения после удаления
+      setShowConfirmDelete(false); 
       setDeletingIndex(null);
     } else {
-      // Иначе, показываем кнопку подтверждения удаления
       setShowConfirmDelete(true);
       setDeletingIndex(index);
     }
   };
 
   const cancelDelete = () => {
-    setShowConfirmDelete(false); // Скрываем кнопку подтверждения при отмене удаления
+    setShowConfirmDelete(false); 
     setDeletingIndex(null);
   };
 
@@ -88,6 +90,8 @@ function Notes() {
 
   return (
     <ChakraProvider theme={theme}>
+     <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', padding: '5px'}}>
+      <Sidebar/>
       <Box textAlign="center" p="10">
         <VStack spacing="4">
           <Heading>Заметки</Heading>
@@ -171,6 +175,7 @@ function Notes() {
           ))}
         </VStack>
       </Box>
+      </div>
     </ChakraProvider>
   );
 }
