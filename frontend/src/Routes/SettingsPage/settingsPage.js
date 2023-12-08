@@ -3,22 +3,18 @@ import {
   Box,
   Heading,
   Divider,
-  Switch,
   VStack,
   ChakraProvider,
 } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
 import { css } from '@emotion/react';
 import Sidebar from '../../Components/Slidebar/slidebar';
-
+import ThemeToggle from '../../AppTheme.js'
 
 const customStyles = css`
   font-weight: bold;
   color: blue;
 `;
-
-<Box css={customStyles}>Стилизованный блок</Box>
-
 
 const SettingsPage = () => {
   return (
@@ -32,7 +28,7 @@ const SettingsPage = () => {
           </Heading>
           <Divider mb={4} />
           <VStack spacing={4} align="flex-start">
-            <SettingsItem label="Уведомления" />
+            <ThemeToggle /> 
             <SettingsItem label="Темная тема" />
           </VStack>
         </Box>
@@ -45,12 +41,6 @@ const SettingsItem = ({ label }) => {
   return (
     <Box w="100%" display="flex" justifyContent="space-between">
       <Box>{label}</Box>
-      <Switch
-        defaultChecked={false}
-        onChange={(e) =>
-          console.log(`${label} изменено на ${e.target.checked}`)
-        }
-      />
     </Box>
   );
 };
