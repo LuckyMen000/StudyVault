@@ -1,33 +1,33 @@
-// src/components/ThemeToggle.js
 import React, { useState, useEffect } from 'react';
-import { IconButton, useColorMode } from '@chakra-ui/react';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import { Switch, useColorMode } from '@chakra-ui/react';
 
 const ThemeToggle = () => {
-    const { colorMode, toggleColorMode } = useColorMode();
-    const [theme, setTheme] = useState('light');
+  const { colorMode, toggleColorMode } = useColorMode();
+  const [checked, setChecked] = useState(colorMode === 'dark');
 
-    const toggleTheme = () => {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
-        setTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-        toggleColorMode(); // Опционально, в зависимости от ваших требований
-    };
+  const toggleTheme = () => {
+    const newChecked = !checked;
+    setChecked(newChecked);
+    const newTheme = newChecked ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    toggleColorMode();
+  };
 
-    useEffect(() => {
-        const storedTheme = localStorage.getItem('theme');
-        if (storedTheme) {
-            setTheme(storedTheme);
-        }
-    }, []);
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setChecked(storedTheme === 'dark');
+    }
+  }, []);
 
-    return (
-        <IconButton
-            icon={theme === 'light' ? <MoonIcon /> : <SunIcon />}
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-        />
-    );
+  return (
+    <Switch
+      colorScheme="blue"
+      isChecked={checked}
+      onChange={toggleTheme}
+      aria-label="Toggle theme"
+    />
+  );
 };
 
 export default ThemeToggle;

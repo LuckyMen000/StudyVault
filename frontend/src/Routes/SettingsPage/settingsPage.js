@@ -3,28 +3,26 @@ import {
   Box,
   Heading,
   Divider,
-  Switch,
   VStack,
   ChakraProvider,
+  Flex,
+  Switch,
 } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
 import { css } from '@emotion/react';
 import Sidebar from '../../Components/Slidebar/slidebar';
-
+import ThemeToggle from '../../AppTheme.js';
 
 const customStyles = css`
   font-weight: bold;
   color: blue;
 `;
 
-<Box css={customStyles}>Стилизованный блок</Box>
-
-
 const SettingsPage = () => {
   return (
     <ChakraProvider>
       <div style={{ display: 'flex', margin: '20px' }}>
-        <Sidebar/>
+        <Sidebar />
         <Box p={4}>
           <Heading as="h1" mb={4} fontSize="2xl">
             <SettingsIcon mr={2} />
@@ -32,8 +30,19 @@ const SettingsPage = () => {
           </Heading>
           <Divider mb={4} />
           <VStack spacing={4} align="flex-start">
-            <SettingsItem label="Уведомления" />
-            <SettingsItem label="Темная тема" />
+            <Flex alignItems="center" mb={4}>
+              <SettingsItem label="Темная тема" />
+              <ThemeToggle />
+            </Flex>
+            <Flex alignItems="center" mb={4}>
+              <SettingsItem label="Уведомления" />
+              <Switch
+                ml="auto"
+                onChange={(e) =>
+                  console.log(`Уведомления изменены на ${e.target.checked}`)
+                }
+              />
+            </Flex>
           </VStack>
         </Box>
       </div>
@@ -42,17 +51,7 @@ const SettingsPage = () => {
 };
 
 const SettingsItem = ({ label }) => {
-  return (
-    <Box w="100%" display="flex" justifyContent="space-between">
-      <Box>{label}</Box>
-      <Switch
-        defaultChecked={false}
-        onChange={(e) =>
-          console.log(`${label} изменено на ${e.target.checked}`)
-        }
-      />
-    </Box>
-  );
+  return <Box flex="1" mr={4}>{label}</Box>;
 };
 
 export default SettingsPage;

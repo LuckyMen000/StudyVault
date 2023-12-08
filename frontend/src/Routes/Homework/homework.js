@@ -13,11 +13,9 @@ const HomeworkPage = () => {
     { id: 1, title: 'Домашнее задание 1' },
     { id: 2, title: 'Домашнее задание 2' },
     { id: 3, title: 'Домашнее задание 3' },
-    // Добавьте другие задания по мере необходимости
   ];
 
   const handleViewClick = (id) => {
-    // Логика обработки нажатия кнопки "Посмотреть", если требуется
     console.log(`Clicked to view homework with ID: ${id}`);
   };
 
