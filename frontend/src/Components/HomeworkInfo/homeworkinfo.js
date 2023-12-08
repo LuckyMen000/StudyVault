@@ -1,13 +1,19 @@
 import React from 'react';
-import { Box, Button, Center, Heading } from '@chakra-ui/react';
+import { 
+  Box, 
+  Button, 
+  Center,
+  Heading 
+} from '@chakra-ui/react';
+import Rectangle from './homework.jpg';
 
-const BackgroundImageWithText = () => {
+const HomeWorkComponentInfo = () => {
   return (
     <Box
-      bgImage="url('./assets/img/Rectangle 159.jpg')"
+      bgImage={`url(${Rectangle})`}
       bgSize="cover"
       bgPosition="center"
-      height="300px" // Высота блока может быть изменена по вашему усмотрению
+      height="300px"
       color="white"
       textAlign="center"
       position="relative"
@@ -17,12 +23,12 @@ const BackgroundImageWithText = () => {
           <Heading size="xl" mb="4">
             Тут реально вся домашка
           </Heading>
-          <Button mr="2">Кнопка 1</Button>
-          <Button>Кнопка 2</Button>
+          <Button mr="2" colorScheme='blue'>Изучить</Button>
+          <Button variant='outline' colorScheme='blue'>Опубликовать</Button>
         </Box>
       </Center>
     </Box>
   );
 };
 
-export default BackgroundImageWithText;
+export default HomeWorkComponentInfo;
