@@ -18,7 +18,7 @@ import {
 import TableCustom from '../../Components/Table/TableComponent';
 
 
-const Note = () => {
+const DocumentPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [documents, setDocuments] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
@@ -146,5 +146,5 @@ const Note = () => {
   );
 };
 
-export default Note;
+export default DocumentPage;
 
