@@ -5,6 +5,8 @@
    cd StudyVault
      |
      |_____ backend
+     |_____ design
+     |_____ docs
      |_____ frontend
 
    git checkout develop
