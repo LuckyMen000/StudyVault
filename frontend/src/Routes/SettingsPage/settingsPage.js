@@ -28,8 +28,10 @@ const SettingsPage = () => {
           </Heading>
           <Divider mb={4} />
           <VStack spacing={4} align="flex-start">
+            <div style={{display: 'flex'}}>
             <ThemeToggle /> 
             <SettingsItem label="Темная тема" />
+            </div>
           </VStack>
         </Box>
       </div>
