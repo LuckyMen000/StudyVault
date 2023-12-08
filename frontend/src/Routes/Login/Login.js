@@ -9,7 +9,9 @@ import {
   Text,
   VStack,
   Center,
+  HStack,
 } from '@chakra-ui/react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 function Login() {
   const [Login, setLogin] = useState('');
@@ -17,6 +19,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Добавьте здесь логику входа
   };
 
   return (
@@ -54,6 +57,23 @@ function Login() {
               <p>If you don't have an account yet,</p>
               <Link textDecoration="underline" to="/register">register now!</Link>
             </Text>
+            <Text fontSize="md">Или войдите через:</Text>
+            <HStack spacing="4">
+              <FaGithub
+                style={{
+                  fontSize: '24px',
+                  cursor: 'pointer',
+                  marginTop: '10px',
+                }}
+              />
+              <FaGoogle
+                style={{
+                  fontSize: '24px',
+                  cursor: 'pointer',
+                  marginTop: '10px',
+                }}
+              />
+            </HStack>
           </form>
         </VStack>
       </Box>
