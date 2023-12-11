@@ -10,10 +10,14 @@ import './main.css'
 const Main = () => {
   return (
     <ChakraProvider>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', padding: '5px'}}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', padding: '5px', marginLeft:'10px'}}>
         <Sidebar />
-        <InputForm />
-        <HomeWorkInfo style={{ display:'flex'}}/>
+        <div>
+          <InputForm />
+          <div style={{ marginTop:'15px' }}>
+          <HomeWorkInfo/>            
+          </div>
+        </div>
         <div style={{ display: 'flex', flexDirection: 'column', }}>
           <div style={{ marginBottom: '20px' }}>
             <Profile />
