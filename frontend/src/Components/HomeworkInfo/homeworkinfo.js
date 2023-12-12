@@ -14,6 +14,8 @@ const HomeWorkComponentInfo = () => {
       bgSize="cover"
       bgPosition="center"
       height="300px"
+      width="500px"
+      borderRadius="15%"
       color="white"
       textAlign="center"
       position="relative"
