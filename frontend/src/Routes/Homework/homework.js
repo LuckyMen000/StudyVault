@@ -7,6 +7,8 @@ import {
  Button 
 } from '@chakra-ui/react';
 import { ViewIcon } from '@chakra-ui/icons';
+import { IoDocumentAttach } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 const HomeworkPage = () => {
   const homeworkData = [
@@ -21,6 +23,15 @@ const HomeworkPage = () => {
 
   return (
     <ChakraProvider>
+      <Link to="/documents">
+        <Button textAlign="right"
+        leftIcon={<IoDocumentAttach />}
+        colorScheme="blue"
+        variant="outline"
+        >
+        Документы 
+        </Button>
+      </Link>
       <Box textAlign="center" mt="4">
         <Heading as="h1" mb="4">Домашние задания</Heading>
         <Container maxW="xl">

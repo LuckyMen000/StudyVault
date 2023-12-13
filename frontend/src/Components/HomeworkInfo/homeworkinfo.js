@@ -6,6 +6,7 @@ import {
   Heading 
 } from '@chakra-ui/react';
 import Rectangle from './homework.jpg';
+import { Link } from 'react-router-dom';
 
 const HomeWorkComponentInfo = () => {
   return (
@@ -25,7 +26,9 @@ const HomeWorkComponentInfo = () => {
           <Heading size="xl" mb="4">
             Тут реально вся домашка
           </Heading>
-          <Button mr="2" colorScheme='blue'>Изучить</Button>
+          <Link to="/homework">
+            <Button mr="2" colorScheme='blue' >Изучить</Button>
+          </Link>
           <Button variant='outline' colorScheme='blue'>Опубликовать</Button>
         </Box>
       </Center>
