@@ -24,9 +24,9 @@ const StudyVaultRoutes = () => (
     <Route path="/notes" element={<Notes />} />
     <Route path="/settings" element={<Settings />} />
     <Route path="/homework" element={<HomeWork />} />
+    <Route path="/homework/documents" element={<Documents/>}/>
     <Route path="*" element={<NotFound/>} />
     <Route path="/bad-gateway" element={<BadGateway/>} />
-    <Route path="/documents" element={<Documents/>}/>
   </Routes>
 );
 

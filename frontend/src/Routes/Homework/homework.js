@@ -23,7 +23,7 @@ const HomeworkPage = () => {
 
   return (
     <ChakraProvider>
-      <Link to="/documents">
+      <Link to="/homework/documents">
         <Button textAlign="right"
         leftIcon={<IoDocumentAttach />}
         colorScheme="blue"
