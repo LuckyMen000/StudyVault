@@ -12,6 +12,7 @@ import HomeWork from '../Routes/Homework/homework';
 import NotFound from '../Routes/ErrPage/NotFoundPage';
 import BadGateway from './ErrPage/BadGateway';
 import Documents from '../Routes/DocumentsPage/documents';
+import HomeWorkPageAdd from '../Routes/Homework/homeworkadd';
 
 const StudyVaultRoutes = () => (
   <Routes>
@@ -24,7 +25,8 @@ const StudyVaultRoutes = () => (
     <Route path="/notes" element={<Notes />} />
     <Route path="/settings" element={<Settings />} />
     <Route path="/homework" element={<HomeWork />} />
-    <Route path="/homework/documents" element={<Documents/>}/>
+    <Route path="/homework/documents" element={<Documents/>} />
+    <Route path="/homework/add" element={<HomeWorkPageAdd/>} />
     <Route path="*" element={<NotFound/>} />
     <Route path="/bad-gateway" element={<BadGateway/>} />
   </Routes>
