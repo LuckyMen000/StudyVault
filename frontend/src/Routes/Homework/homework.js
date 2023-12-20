@@ -7,7 +7,10 @@ import {
  Button 
 } from '@chakra-ui/react';
 import { ViewIcon } from '@chakra-ui/icons';
-import { IoDocumentAttach, IoDocument } from "react-icons/io5";
+import { 
+  IoDocumentAttach, 
+  IoDocument 
+} from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
 const HomeworkPage = () => {

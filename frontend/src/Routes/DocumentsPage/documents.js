@@ -15,6 +15,7 @@ import {
   FormControl,
   FormLabel,
 } from '@chakra-ui/react';
+import Filter from '../../Components/Filter/filter';
 import TableCustom from '../../Components/Table/TableComponent';
 
 
@@ -76,6 +77,7 @@ const DocumentPage = () => {
         <Button colorScheme="teal" onClick={onOpen}>
           Добавить документ
         </Button>
+        <Filter/>
 
         <TableCustom
           headers={["Дата", "Документ", "Скачать файл", "Действия"]}
