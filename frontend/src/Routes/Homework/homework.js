@@ -7,7 +7,7 @@ import {
  Button 
 } from '@chakra-ui/react';
 import { ViewIcon } from '@chakra-ui/icons';
-import { IoDocumentAttach } from "react-icons/io5";
+import { IoDocumentAttach, IoDocument } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
 const HomeworkPage = () => {
@@ -23,25 +23,30 @@ const HomeworkPage = () => {
 
   return (
     <ChakraProvider>
-      <Link to="/homework/documents">
-        <Button textAlign="right"
-        leftIcon={<IoDocumentAttach />}
-        colorScheme="blue"
-        variant="outline"
-        >
-        Документы 
-        </Button>
-      </Link>
+      <Box display="flex" flexDirection="column" alignItems="flex-end" paddingTop="7px" paddingRight="7px">
+        <Link to="/homework/documents">
+          <Button
+            textAlign="right"
+            leftIcon={<IoDocumentAttach />}
+            colorScheme="blue"
+            variant="outline"
+            mb="2"
+          >
+            Документы 
+          </Button>
+        </Link>
 
-      <Link to="/homework/add">
-        <Button textAlign="right"
-        leftIcon={<IoDocumentAttach />}
-        colorScheme="blue"
-        variant="outline"
-        >
-        Создать ДЗ
-        </Button>
-      </Link>
+        <Link to="/homework/add">
+          <Button
+            textAlign="right"
+            leftIcon={<IoDocument />}
+            colorScheme="blue"
+            variant="outline"
+          >
+            Создать ДЗ
+          </Button>
+        </Link>
+      </Box>
 
       <Box textAlign="center" mt="4">
         <Heading as="h1" mb="4">Домашние задания</Heading>
