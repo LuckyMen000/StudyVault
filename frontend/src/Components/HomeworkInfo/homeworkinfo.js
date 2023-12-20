@@ -29,7 +29,9 @@ const HomeWorkComponentInfo = () => {
           <Link to="/homework">
             <Button mr="2" colorScheme='blue' >Изучить</Button>
           </Link>
-          <Button variant='outline' colorScheme='blue'>Опубликовать</Button>
+          <Link to="/homework/add">
+            <Button variant='outline' colorScheme='blue'>Опубликовать</Button>
+          </Link>
         </Box>
       </Center>
     </Box>
