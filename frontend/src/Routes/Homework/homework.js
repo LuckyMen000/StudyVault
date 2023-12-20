@@ -32,6 +32,17 @@ const HomeworkPage = () => {
         Документы 
         </Button>
       </Link>
+
+      <Link to="/homework/add">
+        <Button textAlign="right"
+        leftIcon={<IoDocumentAttach />}
+        colorScheme="blue"
+        variant="outline"
+        >
+        Создать ДЗ
+        </Button>
+      </Link>
+
       <Box textAlign="center" mt="4">
         <Heading as="h1" mb="4">Домашние задания</Heading>
         <Container maxW="xl">
