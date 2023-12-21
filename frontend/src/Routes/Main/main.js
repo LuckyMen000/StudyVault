@@ -5,6 +5,7 @@ import InputForm from '../../Components/Form/input';
 import Profile from '../../Components/ProfileBox/profilebox';
 import NoteBox from '../../Components/NotesBox/Notes';
 import HomeWorkInfo from '../../Components/HomeworkInfo/homeworkinfo';
+import HomeWorkSlider from '../../Components/HomeworkSlider/Homeworkslider';
 import './main.css'
 
 const Main = () => {
@@ -18,6 +19,7 @@ const Main = () => {
             <div style={{ marginTop:'15px' }}>
             <HomeWorkInfo/>            
             </div>
+            <HomeWorkSlider/>
           </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', }}>
