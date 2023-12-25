@@ -1,8 +1,13 @@
-import { Box, Input, Button, Heading, ChakraProvider } from '@chakra-ui/react';
+import { 
+  Box, 
+  Input, 
+  Button, 
+  Heading, 
+  ChakraProvider 
+} from '@chakra-ui/react';
 
 const HomeworkPage = () => {
   const handlePublish = () => {
-    // Логика для публикации задания
   };
 
   return (
