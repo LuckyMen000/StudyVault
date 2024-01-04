@@ -71,6 +71,7 @@ const HomeworkPage = () => {
               <Heading as="h3" size="md" mb="2">
                 {homework.title}
               </Heading>
+              
               <Button
                 rightIcon={<ViewIcon />}
                 colorScheme="blue"
