@@ -73,12 +73,13 @@ const DocumentPage = () => {
 
   return (
     <ChakraProvider>
+      
       <Box p={5}>
         <Button colorScheme="teal" onClick={onOpen}>
           Добавить документ
         </Button>
-        <Filter/>
-
+          <Filter/>
+              
         <TableCustom
           headers={["Дата", "Документ", "Скачать файл", "Действия"]}
           data={documents.map((document, index) => [

@@ -27,8 +27,7 @@ const HomeworkPage = () => {
 
   const filterDocumentsByExtensions = () => {
     console.log('Selected Extensions:', selectedExtensions);
-    // Реализуйте здесь логику фильтрации документов по выбранным расширениям
-    // Например, вызов функции для применения фильтра к вашему списку документов
+    
   };
 
   return (
@@ -57,14 +56,12 @@ const HomeworkPage = () => {
         </Button>
       </Box>
 
-      {/* Далее идет остальной код страницы */}
-      {/* Например, вывод списка домашних заданий */}
       <Box textAlign="center" mt="4">
         <Heading as="h1" mb="4">
           Домашние задания
         </Heading>
         <Container maxW="xl">
-          {/* Ваш код для отображения списка домашних заданий здесь */}
+          {/* Код для отображения списка домашних заданий здесь */}
         </Container>
       </Box>
     </ChakraProvider>
