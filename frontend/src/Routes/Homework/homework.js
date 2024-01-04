@@ -11,7 +11,8 @@ import {
 } from '@chakra-ui/icons';
 import { 
   IoDocumentAttach, 
-  IoDocument 
+  IoDocument,
+  IoPencil 
 } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
@@ -70,6 +71,7 @@ const HomeworkPage = () => {
               <Heading as="h3" size="md" mb="2">
                 {homework.title}
               </Heading>
+              
               <Button
                 rightIcon={<ViewIcon />}
                 colorScheme="blue"
@@ -78,6 +80,16 @@ const HomeworkPage = () => {
               >
                 Посмотреть
               </Button>
+
+              <Button
+                leftIcon={<IoPencil  />}
+                colorScheme="blue"
+                variant="outline"
+                onClick={() => handleViewClick(homework.id)}
+              >
+                
+              </Button>
+
             </Box>
           ))}
         </Container>
