@@ -11,6 +11,12 @@ import {
   Td,
   IconButton,
   ChakraProvider,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from '@chakra-ui/react';
 import { 
   SettingsIcon, 
@@ -24,6 +30,7 @@ import './admin.css';
 
 function Dashboard() {
   const [isCreatingUser, setIsCreatingUser] = useState(false);
+  const [isChatModalOpen, setIsChatModalOpen] = useState(false);
   const [users, setUsers] = useState([]); 
 
   const openCreateUserModal = () => {
@@ -34,9 +41,17 @@ function Dashboard() {
     setIsCreatingUser(false);
   };
 
-  const handleLogout = () => {
+  const openChatModal = () => {
+    setIsChatModalOpen(true);
   };
 
+  const closeChatModal = () => {
+    setIsChatModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    // Обработчик для выхода
+  };
 
   return (
     <ChakraProvider>
@@ -57,8 +72,6 @@ function Dashboard() {
                     icon={<FaDatabase />}
                     aria-label="База Данных"
                     mr={2}
-                    onClick={() => {
-                    }}
                   />
                 </Link>
                 <Link to="/settings" className="admin-button">
@@ -66,8 +79,6 @@ function Dashboard() {
                     icon={<SettingsIcon />}
                     aria-label="Настройки"
                     className="admin-button"
-                    onClick={() => {
-                    }}
                   />
                 </Link>
                 <IconButton
@@ -78,8 +89,9 @@ function Dashboard() {
                 />
                 <IconButton
                   icon={<ChatIcon/>}
-                  arial-label=""
+                  aria-label="Открыть чат"
                   ml={2}
+                  onClick={openChatModal}
                 />
               </Box>
             </Box>
@@ -88,26 +100,41 @@ function Dashboard() {
               <Text mb="12px">
                 Создание пользователя
               </Text>
-            <Button
-              onClick={openCreateUserModal}
-              className="admin-button"
-              colorScheme="teal"
-              mb={4}
-            >
-              Создать пользователя
-            </Button>
-            <Modal isOpen={isCreatingUser} onClose={closeCreateUserModal}>
-            </Modal>
-            <Table className="admin-table">
-              <Tbody>
-                {users.map((user) => (
-                  <Tr key={user.id}>
-                    <Td>{user.name}</Td>
-                    <Td>{user.email}</Td>
-                  </Tr>
-                ))}
-              </Tbody>
-            </Table>
+              <Button
+                onClick={openCreateUserModal}
+                className="admin-button"
+                colorScheme="teal"
+                mb={4}
+              >
+                Создать пользователя
+              </Button>
+              <Modal isOpen={isCreatingUser} onClose={closeCreateUserModal}>
+                {/* Ваш контент для создания пользователя */}
+              </Modal>
+              <Modal isOpen={isChatModalOpen} onClose={closeChatModal}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Чат</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    {/* Ваш контент для чата */}
+                    <Text>Здесь будет ваш чат.</Text>
+                  </ModalBody>
+                  <ModalFooter>
+                    {/* Можете добавить кнопки для чата, если нужно */}
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+              <Table className="admin-table">
+                <Tbody>
+                  {users.map((user) => (
+                    <Tr key={user.id}>
+                      <Td>{user.name}</Td>
+                      <Td>{user.email}</Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
             </Box>
           </Box>
         </Box>
