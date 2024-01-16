@@ -14,7 +14,8 @@ import {
 } from '@chakra-ui/react';
 import { 
   SettingsIcon, 
-  ArrowBackIcon 
+  ArrowBackIcon,
+  ChatIcon
 } from '@chakra-ui/icons';
 import { FaDatabase } from 'react-icons/fa';
 import Sidebar from '../../Components/Slidebar/slidebar';
@@ -74,6 +75,11 @@ function Dashboard() {
                   aria-label="Выйти"
                   onClick={handleLogout}
                   ml={2} 
+                />
+                <IconButton
+                  icon={<ChatIcon/>}
+                  arial-label=""
+                  ml={2}
                 />
               </Box>
             </Box>
