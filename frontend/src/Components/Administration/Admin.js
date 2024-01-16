@@ -25,6 +25,7 @@ import {
 } from '@chakra-ui/icons';
 import { FaDatabase } from 'react-icons/fa';
 import Sidebar from '../../Components/Slidebar/slidebar';
+import ReportButton from '../../Components/ReportCircleMsg/report';
 import { Link } from 'react-router-dom';
 import './admin.css';
 
@@ -109,19 +110,18 @@ function Dashboard() {
                 Создать пользователя
               </Button>
               <Modal isOpen={isCreatingUser} onClose={closeCreateUserModal}>
-                {/* Ваш контент для создания пользователя */}
               </Modal>
               <Modal isOpen={isChatModalOpen} onClose={closeChatModal}>
                 <ModalOverlay />
                 <ModalContent>
-                  <ModalHeader>Чат</ModalHeader>
+                  <ModalHeader>Reporting Message</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                    {/* Ваш контент для чата */}
-                    <Text>Здесь будет ваш чат.</Text>
+                    <Text>
+
+                    </Text>
                   </ModalBody>
                   <ModalFooter>
-                    {/* Можете добавить кнопки для чата, если нужно */}
                   </ModalFooter>
                 </ModalContent>
               </Modal>
