@@ -116,8 +116,8 @@ const DocumentPage = () => {
     name="date"
     value={newDocument.date}
     onChange={handleInputChange}
-    maxLength={10} // Ограничиваем ввод до 10 символов
-    placeholder="дд.мм.гггг" // Добавляем подсказку в фоне поля
+    maxLength={10} 
+    placeholder="дд.мм.гггг" 
   />
 </FormControl>
               <FormControl mt={4}>
