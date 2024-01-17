@@ -14,140 +14,199 @@ import {
   Input,
   FormControl,
   FormLabel,
+  Stack,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Select,
 } from '@chakra-ui/react';
-import Filter from '../../Components/Filter/filter';
-import TableCustom from '../../Components/Table/TableComponent';
 
+const CustomFileInput = ({ onChange }) => {
+  return (
+    <label htmlFor="file" style={fileInputLabelStyle}>
+      Выбрать файл
+      <input
+        id="file"
+        type="file"
+        onChange={onChange}
+        style={fileInputStyle}
+      />
+    </label>
+  );
+};
+
+const fileInputLabelStyle = {
+  display: 'inline-block',
+  backgroundColor: '#3182ce',
+  color: 'white',
+  padding: '10px',
+  borderRadius: '4px',
+  cursor: 'pointer',
+  textAlign: 'center',
+  width: '150px',
+};
+
+const fileInputStyle = {
+  display: 'none',
+};
 
 const DocumentPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [documents, setDocuments] = useState([]);
-  const [selectedDate, setSelectedDate] = useState('');
-  const [documentName, setDocumentName] = useState('');
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [newDocument, setNewDocument] = useState({
+    date: '',
+    title: '',
+    file: null,
+  });
 
-  const addDocument = () => {
-    if (selectedDate && documentName && selectedFile) {
-      const newDocument = {
-        date: selectedDate,
-        name: documentName,
-        file: selectedFile,
-      };
-      setDocuments((prevDocuments) => [...prevDocuments, newDocument]);
-      setSelectedDate('');
-      setDocumentName('');
-      setSelectedFile(null);
-      onClose();
-    }
-  };
-
-  const removeDocument = (index) => {
-    setDocuments((prevDocuments) => {
-      const newDocuments = [...prevDocuments];
-      newDocuments.splice(index, 1);
-      return newDocuments;
-    });
-  };
-
-  const downloadFile = (file) => {
-    const url = URL.createObjectURL(file);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = file.name || 'file';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+   
+    setNewDocument((prev) => ({ ...prev, [name]: value.slice(0, 10) }));
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setSelectedFile(file);
+    setNewDocument((prev) => ({ ...prev, file }));
   };
 
-  const fileIndicator = selectedFile ? (
-    <Box color="green" mt={2}>
-      Файл добавлен: {selectedFile.name}
-    </Box>
-  ) : null;
+  const handleAddDocument = () => {
+    setDocuments((prev) => [...prev, newDocument]);
+    setNewDocument({
+      date: '',
+      title: '',
+      file: null,
+    });
+    onClose();
+  };
+
+  const handleDeleteDocument = (index) => {
+    setDocuments((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const [filter, setFilter] = useState('');
+
+  const filteredDocuments = filter
+    ? documents.filter(
+        (document) =>
+          document.file &&
+          document.file.name.endsWith(`.${filter.toLowerCase()}`)
+      )
+    : documents;
 
   return (
     <ChakraProvider>
-      
-      <Box p={5}>
-        <Button colorScheme="teal" onClick={onOpen}>
+      <Box p={8}>
+        <Button colorScheme="blue" onClick={onOpen}>
           Добавить документ
         </Button>
-          <Filter/>
-              
-        <TableCustom
-          headers={["Дата", "Документ", "Скачать файл", "Действия"]}
-          data={documents.map((document, index) => [
-            document.date,
-            document.name,
-            <Button colorScheme="teal" onClick={() => downloadFile(document.file)}>
-              Скачать файл
-            </Button>,
-            <>
-              <button
-                onClick={() => removeDocument(index)}
-                style={{ color: 'red', cursor: 'pointer', border: 'none', background: 'none' }}
-              >
-                Удалить
-              </button>
-            </>,
-          ])}
-        />
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Добавить документ</ModalHeader>
+            <ModalHeader>Добавление документа</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <FormControl>
-                <FormLabel>Дата</FormLabel>
+            <FormControl>
+  <FormLabel>Дата</FormLabel>
+  <Input
+    name="date"
+    value={newDocument.date}
+    onChange={handleInputChange}
+    maxLength={10} 
+    placeholder="дд.мм.гггг" 
+  />
+</FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Название</FormLabel>
                 <Input
-                  type="date"
-                  value={selectedDate}
-                  onChange={(e) => setSelectedDate(e.target.value)}
+                  name="title"
+                  value={newDocument.title}
+                  onChange={handleInputChange}
                 />
               </FormControl>
               <FormControl mt={4}>
-                <FormLabel>Название документа</FormLabel>
-                <Input
-                  placeholder="Введите название документа"
-                  value={documentName}
-                  onChange={(e) => setDocumentName(e.target.value)}
-                />
-              </FormControl>
-              <FormControl mt={4}>
-                <FormLabel style={{ display: 'flex', alignItems: 'center' }}>
-                  Выберите файл
-                  <Input
-                    type="file"
-                    onChange={handleFileChange}
-                    style={{ opacity: 0, position: 'absolute', zIndex: -1 }}
-                  />
-                  <Button colorScheme="teal" ml={2}>
-                    Обзор
-                  </Button>
-                </FormLabel>
-                {fileIndicator}
+                <FormLabel>Файл</FormLabel>
+                <CustomFileInput onChange={handleFileChange} />
               </FormControl>
             </ModalBody>
+
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={addDocument}>
-                Сохранить
+              <Button colorScheme="blue" mr={3} onClick={handleAddDocument}>
+                Добавить
               </Button>
               <Button onClick={onClose}>Отмена</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
+
+        <Box mt={8}>
+          <Select
+            placeholder="Выбрать фильтр расширения"
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            <option value="txt">TXT</option>
+            <option value="pdf">PDF</option>
+            <option value="docx">DOCX</option>
+            <option value="jpg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="pptx">PPTX</option>
+            <option value="csv">CSV</option>
+            <option value="rtf">RTF</option>
+            <option value="zip">ZIP</option>
+            <option value="reg">REG</option>
+            <option value="mp4">MP4</option>
+          </Select>
+        </Box>
+
+        <Table mt={4}>
+          <Thead>
+            <Tr>
+              <Th>Дата</Th>
+              <Th>Название</Th>
+              <Th>Тип файла</Th>
+              <Th>Действия</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {filteredDocuments.map((document, index) => (
+              <Tr key={index}>
+                <Td>{document.date}</Td>
+                <Td>{document.title}</Td>
+                <Td>{document.file && document.file.name.split('.').pop()}</Td>
+                <Td>
+                  {document.file && (
+                    <>
+                      <Button
+                        as="a"
+                        href={URL.createObjectURL(document.file)}
+                        download={document.file.name}
+                        colorScheme="teal"
+                        variant="outline"
+                        mr={2}
+                      >
+                        Скачать
+                      </Button>
+                      <Button
+                        onClick={() => handleDeleteDocument(index)}
+                        colorScheme="red"
+                        variant="outline"
+                      >
+                        Удалить
+                      </Button>
+                    </>
+                  )}
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
       </Box>
     </ChakraProvider>
   );
 };
 
 export default DocumentPage;
-
