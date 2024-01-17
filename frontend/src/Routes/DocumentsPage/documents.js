@@ -64,7 +64,7 @@ const DocumentPage = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    // Ограничиваем ввод до 10 символов
+   
     setNewDocument((prev) => ({ ...prev, [name]: value.slice(0, 10) }));
   };
 
