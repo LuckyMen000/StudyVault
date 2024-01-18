@@ -1,24 +1,11 @@
+const Router = require('express').Router
 const express = require('express')
-const router = express.Router()
-const Hometask = require('../models/homework')
+const router = new Router()
+const homeworks = require('../controllers/homeworks-controllers')
 const {json} = require("express");
 
-router.get('/', async (req,res)=>{
-    try {
-        const hometasks = await Hometask.find();
-        res.json(hometasks)
-    }catch (error){
-        res.status(500).json({ error:error.message })
-    }
-})
-router.post('/',async (req,res)=>{
-    const newHomework = new Hometask(req.body)
-    try {
-        const savedHomework = await newHomework.save()
-        res.json(savedHomework)
-    } catch (error){
-        res.status(400).json({error:error.message})
-    }
-})
+
+router.get('/',homeworks.getTasks)
+router.post('/',homeworks.createTasks)
 
 module.exports = router;
