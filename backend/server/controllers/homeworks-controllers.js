@@ -2,7 +2,6 @@ const Hometask = require("../models/homework-models");
 class HomeworksControllers{
     async getTasks(req,res){
         try {
-            const hometasks = await Hometask.find();
             res.json(hometasks)
         }catch (error){
             res.status(500).json({ error:error.message })
