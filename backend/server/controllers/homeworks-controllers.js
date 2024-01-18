@@ -18,3 +18,5 @@ class HomeworksControllers{
         }
     }
 }
+
+module.exports = new HomeworksControllers()
