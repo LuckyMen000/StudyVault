@@ -10,12 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/LuckyMen000/StudyVault.git"
   },
-  "author": 
+  "author": [
     "Danil Kossilov",
-    "Begzat Abdulkhakim":
-    "Teymur Kuliev",
-    
-    
+    "Begzat Abdulkhakim"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LuckyMen000/StudyVault/issues"
