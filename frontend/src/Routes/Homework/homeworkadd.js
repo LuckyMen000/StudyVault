@@ -1,13 +1,9 @@
-import { 
-  Box, 
-  Input, 
-  Button, 
-  Heading, 
-  ChakraProvider 
-} from '@chakra-ui/react';
+import React from 'react';
+import { Box, Input, Button, Heading, ChakraProvider } from '@chakra-ui/react';
 
-const HomeworkPage = () => {
+const HomeworkAdd = () => {
   const handlePublish = () => {
+    
   };
 
   return (
@@ -23,12 +19,12 @@ const HomeworkPage = () => {
   );
 };
 
-const HomePage = () => {
+const HomeworkAddPage = () => {
   return (
     <ChakraProvider>
-      <HomeworkPage />
+      <HomeworkAdd />
     </ChakraProvider>
   );
 };
 
-export default HomePage;
+export default HomeworkAddPage;
