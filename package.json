@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "postcss": "^7.0.35",
+    "react-scripts": "^5.0.1",
+    "requires": "^1.0.2",
+    "resolve-url-loader": "^4.0.0",
+    "via": "^0.0.1"
+  }
+}

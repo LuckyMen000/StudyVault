@@ -6,6 +6,8 @@ import {
     Tr,
     Td,
     ChakraProvider,
+    ButtonGroup,
+    Button
   } from '@chakra-ui/react';
   import './admin.css';
 
@@ -30,6 +32,10 @@ import {
   
     return (
       <ChakraProvider>
+        <ButtonGroup>
+          <Button colorScheme='blue' variant='outline'>Скачать лог</Button>
+          <Button colorScheme='blue' variant='outline'>Управление</Button>
+        </ButtonGroup>
         <Box className="admin-page">
           {}
           <Table variant="simple" className="data-table">
