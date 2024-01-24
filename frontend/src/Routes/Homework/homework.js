@@ -1,101 +1,165 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
- ChakraProvider, 
- Box, 
- Container, 
- Heading, 
- Button 
+  ChakraProvider,
+  Box,
+  Container,
+  Heading,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  FormControl,
+  FormLabel,
+  Input,
+  Textarea,
+  Stack,
+  Flex,
+  IconButton,
+  Tooltip,
+  Badge,
 } from '@chakra-ui/react';
-import { 
-  ViewIcon 
-} from '@chakra-ui/icons';
-import { 
-  IoDocumentAttach, 
-  IoDocument,
-  IoPencil 
-} from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { ViewIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
+import '../DocumentsPage/documents';
 
-const HomeworkPage = () => {
-  const homeworkData = [
-    { id: 1, title: 'Домашнее задание 1' },
-    { id: 2, title: 'Домашнее задание 2' },
-    { id: 3, title: 'Домашнее задание 3' },
-  ];
+const HomeWorkPage = () => {
+  const [homeworks, setHomeworks] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedHomework, setSelectedHomework] = useState(null);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [viewMode, setViewMode] = useState(false);
 
-  const handleViewClick = (id) => {
-    console.log(`Clicked to view homework with ID: ${id}`);
+  const handleOpenModal = (homework, isViewMode = false) => {
+    setSelectedHomework(homework);
+    setTitle(homework ? homework.title : '');
+    setDescription(homework ? homework.description : '');
+    setViewMode(isViewMode);
+    setIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedHomework(null);
+    setTitle('');
+    setDescription('');
+    setViewMode(false);
+    setIsOpen(false);
+  };
+
+  const handleSaveHomework = () => {
+    if (selectedHomework && !viewMode) {
+      const updatedHomeworks = homeworks.map((homework) =>
+        homework === selectedHomework
+          ? { ...homework, title, description }
+          : homework
+      );
+      setHomeworks(updatedHomeworks);
+    } else if (!viewMode) {
+      setHomeworks([...homeworks, { title, description }]);
+    }
+
+    handleCloseModal();
+  };
+
+  const handleDeleteHomework = (homework) => {
+    if (!viewMode && window.confirm("Вы уверены, что хотите удалить это домашнее задание?")) {
+      const updatedHomeworks = homeworks.filter((item) => item !== homework);
+      setHomeworks(updatedHomeworks);
+    }
   };
 
   return (
     <ChakraProvider>
-      <Box display="flex" flexDirection="column" alignItems="flex-end" paddingTop="7px" paddingRight="7px">
-        <Link to="/homework/documents">
-          <Button
-            textAlign="right"
-            leftIcon={<IoDocumentAttach />}
-            colorScheme="blue"
-            variant="outline"
-            mb="2"
-          >
-            Документы 
-          </Button>
-        </Link>
+      <Container maxW="container.md" mt={10}>
+        <Heading mb={4}>Домашние Задания</Heading>
+        <Button
+          onClick={() => handleOpenModal(null)}
+          colorScheme="teal"
+        >
+          Добавить ДЗ
+        </Button>
 
-        <Link to="/homework/add">
-          <Button
-            textAlign="right"
-            leftIcon={<IoDocument />}
-            colorScheme="blue"
-            variant="outline"
-          >
-            Создать ДЗ
-          </Button>
-        </Link>
-      </Box>
-
-      <Box textAlign="center" mt="4">
-        <Heading as="h1" mb="4">Домашние задания</Heading>
-        <Container maxW="xl">
-          {homeworkData.map((homework) => (
+        <Stack mt={4}>
+          {homeworks.map((homework) => (
             <Box
-              key={homework.id}
+              key={homework.title}
+              p={4}
               borderWidth="1px"
-              borderRadius="lg"
-              p="4"
-              mb="4"
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
+              borderRadius="md"
+              _hover={{ bg: 'transparent' }}
             >
-              <Heading as="h3" size="md" mb="2">
-                {homework.title}
-              </Heading>
-              
-              <Button
-                rightIcon={<ViewIcon />}
-                colorScheme="blue"
-                variant="outline"
-                onClick={() => handleViewClick(homework.id)}
-              >
-                Посмотреть
-              </Button>
-
-              <Button
-                leftIcon={<IoPencil  />}
-                colorScheme="blue"
-                variant="outline"
-                onClick={() => handleViewClick(homework.id)}
-              >
-                
-              </Button>
-
+              <Flex justify="space-between" align="center">
+                <Badge colorScheme="teal">{homework.title}</Badge>
+                <Stack direction="row">
+                  <Tooltip label="Посмотреть">
+                    <IconButton
+                      icon={<ViewIcon />}
+                      onClick={() => handleOpenModal(homework, true)}
+                      bg="transparent"
+                    />
+                  </Tooltip>
+                  <Tooltip label="Изменить">
+                    <IconButton
+                      icon={<EditIcon />}
+                      onClick={() => handleOpenModal(homework)}
+                      bg="transparent"
+                    />
+                  </Tooltip>
+                  <Tooltip label="Удалить">
+                    <IconButton
+                      icon={<CheckIcon />}
+                      onClick={() => handleDeleteHomework(homework)}
+                      bg="transparent"
+                    />
+                  </Tooltip>
+                </Stack>
+              </Flex>
             </Box>
           ))}
-        </Container>
-      </Box>
+        </Stack>
+
+        <Modal isOpen={isOpen} onClose={handleCloseModal}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>
+              {viewMode ? 'Просмотр ДЗ' : selectedHomework ? 'Редактировать ДЗ' : 'Добавить ДЗ'}
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <FormControl>
+                <FormLabel>Заголовок</FormLabel>
+                <Input
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  isReadOnly={viewMode}
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Описание</FormLabel>
+                <Textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  isReadOnly={viewMode}
+                />
+              </FormControl>
+            </ModalBody>
+
+            <ModalFooter>
+              {!viewMode && (
+                <Button colorScheme="teal" mr={3} onClick={handleSaveHomework}>
+                  Сохранить
+                </Button>
+              )}
+              <Button onClick={handleCloseModal}>Отмена</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Container>
     </ChakraProvider>
   );
 };
 
-export default HomeworkPage;
+export default HomeWorkPage;
