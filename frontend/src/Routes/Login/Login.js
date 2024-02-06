@@ -11,7 +11,10 @@ import {
   Center,
   HStack,
 } from '@chakra-ui/react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { 
+  FaGithub, 
+  FaGoogle 
+} from 'react-icons/fa';
 
 function Login() {
   const [Login, setLogin] = useState('');
@@ -19,11 +22,11 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Добавьте здесь логику входа
+    // Логика входа
   };
 
   return (
-    <Center minH="100vh">
+    <Center minH="100vh" bgGradient='linear(to-l, #7928CA, #C71585)'>
       <Box
         background="gray.300"
         p="8"

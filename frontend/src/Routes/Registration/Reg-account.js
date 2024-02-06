@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Link ,useNavigate} from 'react-router-dom';
+import { 
+  Link as ChakraLink,
+  useNavigate
+} from 'react-router-dom';
 import {
   FormControl,
   FormLabel,
@@ -45,7 +48,7 @@ function Register() {
   };
 
   return (
-      <Center minH="100vh">
+      <Center minH="100vh" bgGradient='linear(to-l, #7928CA, #C71585)'>
         <Box
             background="gray.300"
             p="8"
@@ -85,7 +88,7 @@ function Register() {
               </Button>
               <Text marginTop="15px">
                 <p>If you already have an account,</p>
-                <Link textDecoration="underline" to="/login">Login now!</Link>
+                <ChakraLink textDecoration="underline" to="/login">Login now!</ChakraLink>
               </Text>
             </form>
           </VStack>
