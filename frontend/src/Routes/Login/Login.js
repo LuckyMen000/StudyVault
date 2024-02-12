@@ -11,7 +11,10 @@ import {
   Center,
   HStack,
 } from '@chakra-ui/react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { 
+  FaGithub, 
+  FaGoogle 
+} from 'react-icons/fa';
 
 function Login() {
   const [Login, setLogin] = useState('');
