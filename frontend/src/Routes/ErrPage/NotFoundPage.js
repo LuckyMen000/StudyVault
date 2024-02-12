@@ -4,7 +4,9 @@ import {
   Text, 
   Icon 
 } from '@chakra-ui/react';
-import { MdErrorOutline } from 'react-icons/md';
+import { 
+  MdErrorOutline 
+} from 'react-icons/md';
 
 const NotFoundPage = () => {
   return (
