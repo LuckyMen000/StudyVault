@@ -24,8 +24,8 @@ import {
   ChatIcon
 } from '@chakra-ui/icons';
 import { FaDatabase } from 'react-icons/fa';
-import Sidebar from '../../Components/Slidebar/slidebar';
-import ReportButton from '../../Components/ReportCircleMsg/report';
+import Sidebar from '../Slidebar/slidebar';
+import ReportButton from '../ReportCircleMsg/report';
 import { Link } from 'react-router-dom';
 import './admin.css';
 
