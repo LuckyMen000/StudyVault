@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
 import { css } from '@emotion/react';
-import Sidebar from '../../Components/Slidebar/slidebar';
+import Sidebar from '../../Components/Slidebar/slidebar.jsx';
 import ThemeToggle from '../../AppTheme.js';
 
 const customStyles = css`
