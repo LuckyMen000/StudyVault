@@ -25,10 +25,10 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import { ViewIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
+import '../DocumentsPage/documents';
 
 const HomeWorkPage = () => {
   const { colorMode } = useColorMode();
-
   const [homeworks, setHomeworks] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedHomework, setSelectedHomework] = useState(null);
