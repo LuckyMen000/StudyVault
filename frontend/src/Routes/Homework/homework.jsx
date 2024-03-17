@@ -21,11 +21,14 @@ import {
   IconButton,
   Tooltip,
   Badge,
+  Text,
+  useColorMode,
 } from '@chakra-ui/react';
 import { ViewIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
 import '../DocumentsPage/documents';
 
 const HomeWorkPage = () => {
+  const { colorMode } = useColorMode();
   const [homeworks, setHomeworks] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedHomework, setSelectedHomework] = useState(null);
@@ -50,6 +53,7 @@ const HomeWorkPage = () => {
   };
 
   const handleSaveHomework = () => {
+    const currentDate = new Date().toLocaleDateString();
     if (selectedHomework && !viewMode) {
       const updatedHomeworks = homeworks.map((homework) =>
         homework === selectedHomework
@@ -58,7 +62,7 @@ const HomeWorkPage = () => {
       );
       setHomeworks(updatedHomeworks);
     } else if (!viewMode) {
-      setHomeworks([...homeworks, { title, description }]);
+      setHomeworks([...homeworks, { title, description, date: currentDate }]);
     }
 
     handleCloseModal();
@@ -74,10 +78,14 @@ const HomeWorkPage = () => {
   return (
     <ChakraProvider>
       <Container maxW="container.md" mt={10}>
-        <Heading mb={4}>Домашние Задания</Heading>
+        <Heading mb={4} color="teal.500">
+          📘 Домашние Задания
+        </Heading>
         <Button
           onClick={() => handleOpenModal(null)}
           colorScheme="teal"
+          bg={colorMode === 'light' ? 'gray.500' : 'teal.500'}
+          _hover={{ bg: colorMode === 'light' ? 'gray.400' : 'teal.400' }}
         >
           Добавить ДЗ
         </Button>
@@ -90,15 +98,21 @@ const HomeWorkPage = () => {
               borderWidth="1px"
               borderRadius="md"
               _hover={{ bg: 'transparent' }}
+              bg={colorMode === 'light' ? 'gray.100' : 'gray.700'}
+              boxShadow="md"
+              mb="4"
             >
               <Flex justify="space-between" align="center">
-                <Badge colorScheme="teal">{homework.title}</Badge>
+                <Badge colorScheme="teal" bg="teal.300" color="white">
+                  {homework.title}
+                </Badge>
                 <Stack direction="row">
                   <Tooltip label="Посмотреть">
                     <IconButton
                       icon={<ViewIcon />}
                       onClick={() => handleOpenModal(homework, true)}
                       bg="transparent"
+                      _hover={{ bg: colorMode === 'light' ? 'gray.200' : 'gray.600' }}
                     />
                   </Tooltip>
                   <Tooltip label="Изменить">
@@ -106,6 +120,7 @@ const HomeWorkPage = () => {
                       icon={<EditIcon />}
                       onClick={() => handleOpenModal(homework)}
                       bg="transparent"
+                      _hover={{ bg: colorMode === 'light' ? 'gray.200' : 'gray.600' }}
                     />
                   </Tooltip>
                   <Tooltip label="Удалить">
@@ -113,10 +128,14 @@ const HomeWorkPage = () => {
                       icon={<CheckIcon />}
                       onClick={() => handleDeleteHomework(homework)}
                       bg="transparent"
+                      _hover={{ bg: colorMode === 'light' ? 'gray.200' : 'gray.600' }}
                     />
                   </Tooltip>
                 </Stack>
               </Flex>
+              <Text mt={2} fontSize="sm" color={colorMode === 'light' ? 'gray.600' : 'gray.300'}>
+                Добавлено: {homework.date}
+              </Text>
             </Box>
           ))}
         </Stack>
@@ -124,8 +143,8 @@ const HomeWorkPage = () => {
         <Modal isOpen={isOpen} onClose={handleCloseModal}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>
-              {viewMode ? 'Просмотр ДЗ' : selectedHomework ? 'Редактировать ДЗ' : 'Добавить ДЗ'}
+            <ModalHeader color="teal.500">
+              {viewMode ? '👁‍🗨 Просмотр ДЗ' : selectedHomework ? '✏️ Редактировать ДЗ' : '➕ Добавить ДЗ'}
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
